@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_reader/article.dart';
 import 'package:news_reader/data.dart';
+import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,7 +32,8 @@ class _HomePageState extends State<HomePage> {
   Data data = Data();
   int pageSize = 15, page = 1;
   Future<List<Article>> fetchArticles;
-
+  bool _isSpeaking = false;
+  FlutterTts flutterTts = FlutterTts();
   @override
   void initState() {
     fetchArticles = data.fetchArticles(pageSize, page);
@@ -51,6 +54,9 @@ class _HomePageState extends State<HomePage> {
                   return Card(
                     child: InkWell(
                       splashColor: Colors.black,
+                      onLongPress: () async {
+                        await _toggleSpeak(snapshot.data[index].content);
+                      },
                       onTap: () {
                         if (snapshot.data[index].content != null) {
                           Navigator.of(context).push(
@@ -72,7 +78,6 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: Container(
                         padding: EdgeInsets.all(12),
-                        height: 200,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
@@ -82,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Text(
                               snapshot.data[index].description ??= "Empty",
-                              style: Theme.of(context).textTheme.subtitle,
+                              style: Theme.of(context).textTheme.subhead,
                             )
                           ],
                         ),
@@ -98,6 +103,21 @@ class _HomePageState extends State<HomePage> {
         }
       },
     );
+  }
+
+  //!
+  Future _toggleSpeak(String str) async {
+    if (_isSpeaking) {
+      await flutterTts.speak(str);
+      setState(() {
+        _isSpeaking = false;
+      });
+    } else {
+      await flutterTts.stop();
+      setState(() {
+        _isSpeaking = true;
+      });
+    }
   }
 }
 
@@ -134,31 +154,71 @@ class _ArticlePageState extends State<ArticlePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text(widget.article.content),
-              Text(_words[_indexWords]),
+              Text(
+                widget.article.content,
+              ),
+              Card(
+                child: Container(
+                  height: 150,
+                  width: 200,
+                  child: Center(
+                    child: Text(
+                      _words[_indexWords],
+                      style: Theme.of(context).textTheme.body2.copyWith(
+                            fontSize: 25,
+                          ),
+                    ),
+                  ),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   IconButton(
                     icon: Icon(Icons.arrow_left),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (_indexWords != 0) {
+                        setState(() {
+                          _isReading = false;
+                          _indexWords--;
+                        });
+                      }
+                    },
+                    iconSize: 80,
                   ),
                   _isReading
                       ? IconButton(
                           icon: Icon(Icons.pause),
                           onPressed: _toggleReading,
+                          iconSize: 80,
                         )
                       : IconButton(
                           icon: Icon(Icons.play_arrow),
-                          onPressed: _toggleReading,
+                          iconSize: 80,
+                          onPressed: () {
+                            _toggleReading();
+                          },
                         ),
                   IconButton(
                     icon: Icon(Icons.arrow_right),
-                    onPressed: () {},
+                    iconSize: 80,
+                    onPressed: () {
+                      if (_indexWords != _words.length - 1) {
+                        setState(() {
+                          _isReading = false;
+                          _indexWords++;
+                        });
+                      }
+                    },
                   ),
                 ],
               ),
-              Slider(
+              FluidSlider(
+                sliderColor: Colors.grey[800],
+                thumbColor: Colors.black,
+                valueTextStyle: Theme.of(context).textTheme.title.copyWith(
+                      color: Colors.white,
+                    ),
                 onChanged: (value) {
                   setState(() {
                     _wpm = value.toInt();
@@ -166,7 +226,7 @@ class _ArticlePageState extends State<ArticlePage> {
                 },
                 value: _wpm.toDouble(),
                 min: 100,
-                max: 500,
+                max: 600,
               )
             ],
           ),
