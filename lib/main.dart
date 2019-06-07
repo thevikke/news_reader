@@ -142,6 +142,12 @@ class _ArticlePageState extends State<ArticlePage> {
   }
 
   @override
+  void dispose() {
+    _isReading = false;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
