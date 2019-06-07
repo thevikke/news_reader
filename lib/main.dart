@@ -107,6 +107,7 @@ class _HomePageState extends State<HomePage> {
 
   //!
   Future _toggleSpeak(String str) async {
+    await flutterTts.setLanguage("en-US");
     if (_isSpeaking) {
       await flutterTts.speak(str);
       setState(() {

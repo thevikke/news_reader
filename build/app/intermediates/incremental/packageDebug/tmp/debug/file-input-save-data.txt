@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Jun 07 12:50:06 EEST 2019
+#Fri Jun 07 13:11:09 EEST 2019
 4.path=classes.dex
 13.baseType=DIRECTORY
 8.set=ASSET
@@ -11,8 +11,8 @@
 8.path=flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 12.path=lib/x86/libflutter.so
 3.base=C\:\\src\\news_reader\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
-14.path=flutter_assets/vm_snapshot_data
-15.set=NATIVE_RESOURCE
+14.path=lib/arm64-v8a/libflutter.so
+15.set=ASSET
 4.set=DEX
 5.base=C\:\\src\\news_reader\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 16.path=lib/x86_64/libflutter.so
@@ -23,11 +23,11 @@
 1.baseType=DIRECTORY
 11.set=ASSET
 0.set=DEX
-15.base=C\:\\src\\news_reader\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
+15.base=C\:\\src\\news_reader\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 14.baseType=DIRECTORY
 6.baseType=DIRECTORY
 7.set=ASSET
-14.set=ASSET
+14.set=NATIVE_RESOURCE
 3.set=ASSET
 2.baseType=DIRECTORY
 10.baseType=DIRECTORY
@@ -46,7 +46,7 @@
 13.path=snapshot_blob.bin.d
 11.baseType=DIRECTORY
 4.base=C\:\\src\\news_reader\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\1
-15.path=lib/armeabi-v7a/libflutter.so
+15.path=flutter_assets/vm_snapshot_data
 3.baseType=DIRECTORY
 6.base=C\:\\src\\news_reader\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 16.baseType=DIRECTORY
@@ -56,7 +56,7 @@
 2.set=DEX
 8.baseType=DIRECTORY
 12.base=C\:\\src\\news_reader\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
-14.base=C\:\\src\\news_reader\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+14.base=C\:\\src\\news_reader\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 16.base=C\:\\src\\news_reader\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 9.set=ASSET
 count=17
