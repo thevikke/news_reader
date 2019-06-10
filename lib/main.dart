@@ -9,12 +9,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'News Reader',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('News Reader'),
+          title: Text(
+            'News Reader',
+            style: TextStyle(color: Colors.black),
+          ),
           centerTitle: true,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         ),
         body: HomePage(),
       ),
@@ -44,12 +49,16 @@ class _HomePageState extends State<HomePage> {
       future: fetchArticles,
       builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
         if (snapshot.hasData) {
-          return Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: ListView.builder(
-                itemCount: pageSize,
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
+          return ListView.builder(
+              padding: EdgeInsets.all(6),
+              itemCount: pageSize,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: InkWell(
                       splashColor: Colors.black,
                       onTap: () {
@@ -88,9 +97,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                  );
-                }),
-          );
+                  ),
+                );
+              });
         } else {
           return Center(
             child: CircularProgressIndicator(),
@@ -131,9 +140,14 @@ class _ArticlePageState extends State<ArticlePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.article.title),
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Text(
+            widget.article.title,
+            style: TextStyle(color: Colors.black),
+          ),
           centerTitle: true,
-          backgroundColor: Colors.grey[800],
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
