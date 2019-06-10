@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:news_reader/article.dart';
 import 'package:news_reader/data.dart';
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,8 +31,7 @@ class _HomePageState extends State<HomePage> {
   Data data = Data();
   int pageSize = 15, page = 1;
   Future<List<Article>> fetchArticles;
-  bool _isSpeaking = false;
-  FlutterTts flutterTts = FlutterTts();
+
   @override
   void initState() {
     fetchArticles = data.fetchArticles(pageSize, page);
@@ -54,9 +52,6 @@ class _HomePageState extends State<HomePage> {
                   return Card(
                     child: InkWell(
                       splashColor: Colors.black,
-                      onLongPress: () async {
-                        await _toggleSpeak(snapshot.data[index].content);
-                      },
                       onTap: () {
                         if (snapshot.data[index].content != null) {
                           Navigator.of(context).push(
@@ -103,22 +98,6 @@ class _HomePageState extends State<HomePage> {
         }
       },
     );
-  }
-
-  //!
-  Future _toggleSpeak(String str) async {
-    await flutterTts.setLanguage("en-US");
-    if (_isSpeaking) {
-      await flutterTts.speak(str);
-      setState(() {
-        _isSpeaking = false;
-      });
-    } else {
-      await flutterTts.stop();
-      setState(() {
-        _isSpeaking = true;
-      });
-    }
   }
 }
 
