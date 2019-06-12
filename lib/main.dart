@@ -12,15 +12,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'News Reader',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'News Reader',
-            style: TextStyle(color: Colors.black),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
         body: HomePage(),
       ),
     );
@@ -50,7 +41,12 @@ class _HomePageState extends State<HomePage> {
       builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
-              padding: EdgeInsets.all(6),
+              padding: EdgeInsets.only(
+                right: 6,
+                left: 6,
+                top: 30,
+                bottom: 25,
+              ),
               itemCount: pageSize,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
