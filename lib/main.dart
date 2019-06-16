@@ -1,11 +1,22 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_networkimage/provider.dart';
+import 'package:flutter_advanced_networkimage/transition.dart';
 import 'package:news_reader/article.dart';
 import 'package:news_reader/data.dart';
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,97 +35,159 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Data data = Data();
-  int pageSize = 15, page = 1;
-  Future<List<Article>> fetchArticles;
-
+  ScrollController controller;
+  Data articleData = Data();
+  final int pageSize = 15;
+  int page = 1;
   @override
   void initState() {
-    fetchArticles = data.fetchArticles(pageSize, page);
+    articleData.fetchArticles(pageSize, page);
+    controller = new ScrollController()..addListener(_scrollListener);
     super.initState();
   }
 
   @override
+  void dispose() {
+    controller.removeListener(_scrollListener);
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    if (controller.position.pixels == controller.position.maxScrollExtent) {
+      articleData.fetchArticles(pageSize, page + 1);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: fetchArticles,
-      builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
-        if (snapshot.hasData) {
-          return ListView.builder(
-              padding: EdgeInsets.only(
-                right: 6,
-                left: 6,
-                top: 30,
-                bottom: 25,
-              ),
-              itemCount: pageSize,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: InkWell(
-                      splashColor: Colors.black,
-                      onTap: () {
-                        if (snapshot.data[index].content != null) {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (BuildContext context) => ArticlePage(
-                                    article: snapshot.data[index],
-                                  ),
-                            ),
-                          );
-                        } else {
-                          Scaffold.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text("Sorry, no content!"),
-                              backgroundColor: Colors.redAccent,
-                              duration: Duration(seconds: 2),
-                            ),
-                          );
-                        }
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(12),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Text(
-                              snapshot.data[index].title ??= "Empty",
-                              style: Theme.of(context).textTheme.title,
-                            ),
-                            Text(
-                              snapshot.data[index].description ??= "Empty",
-                              style: Theme.of(context).textTheme.subhead,
-                            )
-                          ],
+    return ScopedModel<Data>(
+      model: articleData,
+      child: ScopedModelDescendant<Data>(
+        builder: (context, child, model) {
+          return model.articles.length != 0
+              ? Container(
+                  // Background color.
+                  color: Colors.grey[200],
+                  child: CustomScrollView(
+                    controller: controller,
+                    slivers: <Widget>[
+                      SliverAppBar(
+                        title: Text("terve"),
+                        floating: true,
+                      ),
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            var data = model.articles;
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 10.0),
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Column(
+                                      children: <Widget>[
+                                        Image.network(data[index].urlToImage ??=
+                                            "https://via.placeholder.com/150"),
+                                        Container(
+                                          padding: EdgeInsets.all(15),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: <Widget>[
+                                              Text(
+                                                data[index].title ??= "Empty",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .title,
+                                              ),
+                                              Text(
+                                                data[index].description ??=
+                                                    "Empty",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .subhead,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Positioned.fill(
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: InkWell(
+                                          splashColor: Colors.black,
+                                          onTap: () {
+                                            if (data[index].url != null) {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ArticleWebPage(
+                                                          data[index].url),
+                                                ),
+                                              );
+                                            } else {
+                                              Scaffold.of(context).showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                      "Sorry we are missing url!"),
+                                                ),
+                                              );
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                          childCount: model.articles.length,
                         ),
                       ),
-                    ),
+                    ],
+                  ))
+              : Container(
+                  child: Center(
+                    child: CircularProgressIndicator(),
                   ),
                 );
-              });
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
+        },
+      ),
     );
   }
 }
 
-class ArticlePage extends StatefulWidget {
-  ArticlePage({this.article});
+class ArticleWebPage extends StatelessWidget {
+  ArticleWebPage(this.url);
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: WebView(
+        initialUrl: url,
+        javascriptMode: JavascriptMode.unrestricted,
+      ),
+    );
+  }
+}
+
+class SpeedReaderPage extends StatefulWidget {
+  SpeedReaderPage({this.article});
   final Article article;
 
   @override
-  _ArticlePageState createState() => _ArticlePageState();
+  _SpeedReaderPageState createState() => _SpeedReaderPageState();
 }
 
-class _ArticlePageState extends State<ArticlePage> {
+class _SpeedReaderPageState extends State<SpeedReaderPage> {
   List<String> _words;
   int _indexWords = 0;
   int _wpm = 100;

@@ -5,6 +5,12 @@ INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:1:1-33
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:1:1-33:12
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:1:1-33:12
 MERGED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:1:1-33:12
+MERGED from [:path_provider] C:\src\news_reader\build\path_provider\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-7:12
+MERGED from [:webview_flutter] C:\src\news_reader\build\webview_flutter\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\webkit-1.0.0.aar\9418883376a315fba7c0a8f0f125977f\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\core-1.0.0.aar\c1259d14d609db8cd0b34a28af906e89\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.0.0.aar\7e450604e2c7d4382a37ddbd72eb8990\AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.0.0.aar\a3abf0b1378b89aa4f67c2eedf593ff1\AndroidManifest.xml:17:1-22:12
 INJECTED from C:\src\news_reader\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from C:\src\news_reader\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from C:\src\news_reader\android\app\src\debug\AndroidManifest.xml:1:1-7:12
@@ -24,6 +30,12 @@ INJECTED from C:\src\news_reader\android\app\src\debug\AndroidManifest.xml:1:1-7
 		ADDED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:1:11-69
 application
 ADDED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:9:5-32:19
+MERGED from [androidx.core:core:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\core-1.0.0.aar\c1259d14d609db8cd0b34a28af906e89\AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\core-1.0.0.aar\c1259d14d609db8cd0b34a28af906e89\AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.0.0.aar\7e450604e2c7d4382a37ddbd72eb8990\AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.0.0.aar\7e450604e2c7d4382a37ddbd72eb8990\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\core-1.0.0.aar\c1259d14d609db8cd0b34a28af906e89\AndroidManifest.xml:22:18-86
 	android:label
 		ADDED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:11:9-36
 	android:icon
@@ -64,6 +76,18 @@ uses-sdk
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml
+MERGED from [:path_provider] C:\src\news_reader\build\path_provider\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\src\news_reader\build\path_provider\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter] C:\src\news_reader\build\webview_flutter\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter] C:\src\news_reader\build\webview_flutter\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\webkit-1.0.0.aar\9418883376a315fba7c0a8f0f125977f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\webkit-1.0.0.aar\9418883376a315fba7c0a8f0f125977f\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\core-1.0.0.aar\c1259d14d609db8cd0b34a28af906e89\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\core-1.0.0.aar\c1259d14d609db8cd0b34a28af906e89\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.0.0.aar\7e450604e2c7d4382a37ddbd72eb8990\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.0.0.aar\7e450604e2c7d4382a37ddbd72eb8990\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.0.0.aar\a3abf0b1378b89aa4f67c2eedf593ff1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.0.0.aar\a3abf0b1378b89aa4f67c2eedf593ff1\AndroidManifest.xml:20:5-44
 INJECTED from C:\src\news_reader\android\app\src\debug\AndroidManifest.xml
 INJECTED from C:\src\news_reader\android\app\src\debug\AndroidManifest.xml
 	android:targetSdkVersion
