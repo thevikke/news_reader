@@ -1,10 +1,10 @@
 #Internal package file, do not edit.
-#Sun Jun 16 18:44:25 EEST 2019
+#Mon Jun 17 12:43:45 EEST 2019
 4.path=flutter_assets/AssetManifest.json
 8.set=NATIVE_RESOURCE
 6.path=flutter_assets/kernel_blob.bin
 0.baseType=DIRECTORY
-10.path=lib/x86_64/libflutter.so
+10.path=lib/armeabi-v7a/libflutter.so
 5.baseType=DIRECTORY
 1.base=C\:\\src\\news_reader\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 8.path=lib/x86/libflutter.so
@@ -29,7 +29,7 @@
 5.path=flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 0.base=C\:\\src\\news_reader\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 7.path=flutter_assets/LICENSE
-11.path=lib/armeabi-v7a/libflutter.so
+11.path=lib/x86_64/libflutter.so
 9.path=flutter_assets/vm_snapshot_data
 6.set=ASSET
 2.base=C\:\\src\\news_reader\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out

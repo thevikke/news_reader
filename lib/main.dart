@@ -1,8 +1,5 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_networkimage/provider.dart';
-import 'package:flutter_advanced_networkimage/transition.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:news_reader/article.dart';
 import 'package:news_reader/data.dart';
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
@@ -89,8 +86,16 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Column(
                                       children: <Widget>[
-                                        Image.network(data[index].urlToImage ??=
-                                            "https://via.placeholder.com/150"),
+                                        // Image.network(data[index].urlToImage ??=
+                                        //     "http://via.placeholder.com/350x150"),
+                                        CachedNetworkImage(
+                                          imageUrl: data[index].urlToImage ??=
+                                              "http://via.placeholder.com/350x150",
+                                          placeholder: (context, url) =>
+                                              new CircularProgressIndicator(),
+                                          errorWidget: (context, url, error) =>
+                                              new Icon(Icons.error),
+                                        ),
                                         Container(
                                           padding: EdgeInsets.all(15),
                                           child: Column(
@@ -119,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                                       child: Material(
                                         color: Colors.transparent,
                                         child: InkWell(
-                                          splashColor: Colors.black,
+                                          splashColor: Colors.blueAccent,
                                           onTap: () {
                                             if (data[index].url != null) {
                                               Navigator.push(

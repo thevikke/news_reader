@@ -22,7 +22,8 @@ class Data extends Model {
             articles.add(new Article.fromJson(v));
           });
           articles.forEach((article) {
-            print(article.title);
+            //! tulosta kaikki urlit ja testaa toisessa sovelluksessa
+            print(article.urlToImage);
           });
           notifyListeners();
         }

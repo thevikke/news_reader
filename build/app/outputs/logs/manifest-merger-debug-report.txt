@@ -5,6 +5,7 @@ INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:1:1-33
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:1:1-33:12
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:1:1-33:12
 MERGED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml:1:1-33:12
+MERGED from [:sqflite] C:\src\news_reader\build\sqflite\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] C:\src\news_reader\build\path_provider\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-7:12
 MERGED from [:webview_flutter] C:\src\news_reader\build\webview_flutter\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Vikke\.gradle\caches\transforms-1\files-1.1\webkit-1.0.0.aar\9418883376a315fba7c0a8f0f125977f\AndroidManifest.xml:17:1-22:12
@@ -76,6 +77,8 @@ uses-sdk
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\src\news_reader\android\app\src\main\AndroidManifest.xml
+MERGED from [:sqflite] C:\src\news_reader\build\sqflite\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] C:\src\news_reader\build\sqflite\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\src\news_reader\build\path_provider\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\src\news_reader\build\path_provider\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter] C:\src\news_reader\build\webview_flutter\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
