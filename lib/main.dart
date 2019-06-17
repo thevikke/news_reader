@@ -6,6 +6,7 @@ import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+///! This project is on hold until I get proper news api
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
